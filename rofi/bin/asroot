@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+DIR="$HOME/.config/bspwm"
+rofi_cmd="rofi -theme $DIR/rofi/themes/asroot.rasi"
+
+# Apps
+terminal=" Gnome-Terminal"
+files=" Thunar"
+editor=" Geany"
+clifm=" Ranger"
+vim=" NeoVim"
+
+# Variable passed to rofi
+options="$terminal\n$files\n$editor\n$clifm\n$vim"
+
+# Functions
+
+chosen="$(echo -e "$options" | $rofi_cmd -p "Run apps as root" -dmenu -selected-row 0)"
+case $chosen in
+    $terminal)
+        gnome-terminal
+        ;;
+    $files)
+        sudo thunar
+        ;;
+    $editor)
+        sudo geany
+        ;;
+    $clifm)
+        sudo ranger
+        ;;
+    $vim)
+        sudo nvim
+        ;;
+esac

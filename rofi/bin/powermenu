@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+
+dir="$HOME/.config/bspwm/rofi/themes"
+
+
+
+
+uptime=$(uptime -p | sed -e 's/up //g')
+
+rofi_command="rofi -theme $dir/powermenu.rasi"
+
+# Options
+shutdown=""
+reboot=""
+suspend=""
+logout=""
+
+# Variable passed to rofi
+options="$shutdown\n$reboot\n$suspend\n$logout"
+
+chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 2)"
+case $chosen in
+    $shutdown)
+		systemctl poweroff
+        ;;
+    $reboot)
+		systemctl reboot
+        ;;
+    $suspend)
+		mpc -q pause
+		amixer set Master mute
+		systemctl suspend
+        ;;
+    $logout)
+		bspc quit
+        ;;
+esac
+
