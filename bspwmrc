@@ -24,7 +24,9 @@ source "$BSPDIR"/themes/current.bash
 
 ## Get the wallpaper from theme file
 sxhkd &
-feh --bg-fill /home/kana/Imágenes/Fondos/01.jpg
+#feh --bg-fill /home/kana/Imágenes/Fondos/06.jpg
+#feh --bg-fill /home/kana/Imágenes/Fondos/07.jpg
+feh --bg-fill /home/kana/Imágenes/Fondos/21.jpg
 ## Get the colors from theme file
 BACKGROUND="$background"
 GREEN="$color2"
@@ -93,44 +95,44 @@ bspc rule -a code-oss desktop='^4' follow=on focus=on
 bspc rule -a code desktop='^4' follow=on focus=on
 
 ## 5 > office and docs (always open office/doc apps on workspace-5)
-   bspc rule -a Gucharmap desktop='^5' follow=on focus=on
-   bspc rule -a Atril desktop='^5' follow=on focus=on
-   bspc rule -a Evince desktop='^5' follow=on focus=on
-   bspc rule -a libreoffice-writer desktop='^5' follow=on focus=on
-   bspc rule -a libreoffice-calc desktop='^5' follow=on focus=on
-   bspc rule -a libreoffice-impress desktop='^5' follow=on focus=on
-   bspc rule -a libreoffice-startcenter desktop='^5' follow=on focus=on
-   bspc rule -a libreoffice desktop='^5' follow=on focus=on
-   bspc rule -a Soffice desktop='^5' follow=on focus=on
-   bspc rule -a libreofficedev desktop='^5' follow=on focus=on
-   bspc rule -a soffice desktop='^5' follow=on focus=on
+bspc rule -a Gucharmap desktop='^5' follow=on focus=on
+bspc rule -a Atril desktop='^5' follow=on focus=on
+bspc rule -a Evince desktop='^5' follow=on focus=on
+bspc rule -a libreoffice-writer desktop='^5' follow=on focus=on
+bspc rule -a libreoffice-calc desktop='^5' follow=on focus=on
+bspc rule -a libreoffice-impress desktop='^5' follow=on focus=on
+bspc rule -a libreoffice-startcenter desktop='^5' follow=on focus=on
+bspc rule -a libreoffice desktop='^5' follow=on focus=on
+bspc rule -a Soffice desktop='^5' follow=on focus=on
+bspc rule -a libreofficedev desktop='^5' follow=on focus=on
+bspc rule -a soffice desktop='^5' follow=on focus=on
 
 ## 6 > communication (always open communication apps on workspace-6)
-   bspc rule -a Thunderbird desktop='^6' follow=on focus=on
-   bspc rule -a TelegramDesktop desktop='^6' follow=on focus=on
-   bspc rule -a Hexchat desktop='^6' follow=on focus=on
+bspc rule -a Thunderbird desktop='^6' follow=on focus=on
+bspc rule -a TelegramDesktop desktop='^6' follow=on focus=on
+bspc rule -a Hexchat desktop='^6' follow=on focus=on
 
 ## 7 > media (always open media apps on workspace-7)
-   bspc rule -a Audacity desktop='^7' state=floating follow=on focus=on
-   bspc rule -a Music desktop='^7' state=floating follow=on focus=on
-   bspc rule -a MPlayer desktop='^7' state=floating follow=on focus=on
-   bspc rule -a Lxmusic desktop='^7' state=floating follow=on focus=on
-   bspc rule -a Inkscape desktop='^7' state=floating follow=on focus=on
-   bspc rule -a krita desktop='^7' state=floating follow=on focus=on
-   bspc rule -a Gimp-2.10 desktop='^7' state=floating follow=on focus=on
-   bspc rule -a obs desktop='^7' state=floating follow=on focus=on
+bspc rule -a Audacity desktop='^7' state=floating follow=on focus=on
+bspc rule -a Music desktop='^7' state=floating follow=on focus=on
+bspc rule -a MPlayer desktop='^7' state=floating follow=on focus=on
+bspc rule -a Lxmusic desktop='^7' state=floating follow=on focus=on
+bspc rule -a Inkscape desktop='^7' state=floating follow=on focus=on
+bspc rule -a krita desktop='^7' state=floating follow=on focus=on
+bspc rule -a Gimp-2.10 desktop='^7' state=floating follow=on focus=on
+bspc rule -a obs desktop='^7' state=floating follow=on focus=on
 
 ## 8 > system (always open system apps on workspace-8)
 bspc rule -a 'VirtualBox Manager' desktop='^8' follow=on focus=on
 bspc rule -a GParted desktop='^8' follow=on focus=on
-   bspc rule -a Lxappearance desktop='^8' state=floating follow=on focus=on
-   bspc rule -a Lxtask desktop='^8' state=floating follow=on focus=on
-   bspc rule -a Lxrandr desktop='^8' state=floating follow=on focus=on
-   bspc rule -a Arandr desktop='^8' state=floating follow=on focus=on
-   bspc rule -a System-config-printer.py desktop='^8' state=floating follow=on focus=on
-   bspc rule -a Pavucontrol desktop='^8' state=floating follow=on focus=on
-   bspc rule -a Exo-helper-1 desktop='^8' state=floating follow=on focus=on
-   bspc rule -a Xfce4-power-manager-settings desktop='^8' state=floating follow=on focus=on
+bspc rule -a Lxappearance desktop='^8' state=floating follow=on focus=on
+bspc rule -a Lxtask desktop='^8' state=floating follow=on focus=on
+bspc rule -a Lxrandr desktop='^8' state=floating follow=on focus=on
+bspc rule -a Arandr desktop='^8' state=floating follow=on focus=on
+bspc rule -a System-config-printer.py desktop='^8' state=floating follow=on focus=on
+bspc rule -a Pavucontrol desktop='^8' state=floating follow=on focus=on
+bspc rule -a Exo-helper-1 desktop='^8' state=floating follow=on focus=on
+bspc rule -a Xfce4-power-manager-settings desktop='^8' state=floating follow=on focus=on
 
 bspc rule -a Conky state=floating manage=off
 bspc rule -a stalonetray state=floating manage=off
@@ -181,9 +183,9 @@ bspfloat &
 PBDIR="$HOME/.config/bspwm/polybar"
 
 bash "$PBDIR"/launch.sh --hack
-bash "$PBDIR"/hack/scripts/colors-dark.sh --blue
+bash "$PBDIR"/hack/scripts/colors-dark.sh --red
 
-gnome-terminal
-gnome-terminal
-gnome-terminal
-gnome-terminal
+gnome-terminal --hide-menubar --working-directory=/ -e zsh
+gnome-terminal --hide-menubar -e zsh
+gnome-terminal --hide-menubar --working-directory=/home/kana/.config/ -e zsh
+gnome-terminal --hide-menubar --working-directory=/home/kana/Trabajo/ -e zsh

@@ -15,13 +15,13 @@ super + shift + w
 	sh ~/.config/bspwm/rofi/bin/windows
 # Rofi App Launcher
 super + shift + d
-	sh ~/.config/bspwm/rofi/bin/launcher
+	rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/hack/scripts/rofi/launcher.rasi
 
 super + d
-    rofi -font "hack 9" -show drun -icon-theme "parrot-common" -show-icons
+    rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/hack/scripts/rofi/launcher.rasi
 
 # make sxhkd reload its configuration files:
-super + Escape
+super + shift + r
 	pkill -USR1 -x sxhkd
 #
 # bspwm hotkeys
