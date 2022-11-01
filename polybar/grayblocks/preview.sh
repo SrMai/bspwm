@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DIR="$HOME/.config/polybar/grayblocks"
+DIR="$HOME~/.config/bspwm/polybar/grayblocks"
 
 # Terminate already running bar instances
 killall -q polybar

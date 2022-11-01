@@ -2,7 +2,7 @@
 
 # Add this script to your wm startup file.
 
-DIR="$HOME/.config/polybar/colorblocks"
+DIR="$HOME~/.config/bspwm/polybar/colorblocks"
 
 # Terminate already running bar instances
 killall -q polybar

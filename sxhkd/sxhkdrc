@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 #
 # Atajos de teclado creados por https://github.com/srmai
 #
@@ -9,16 +11,19 @@ ctrl + alt + t
 	sh ~/.config/bspwm/rofi/bin/themes
 
 # Rofi Menus/Applets
-super + {w,n,x,r,s}
-	sh ~/.config/bspwm/rofi/bin/{windows,mpd,powermenu,asroot,screenshot}
+super + {w,n,r,s}
+	sh ~/.config/bspwm/rofi/bin/{windows,mpd,asroot,screenshot}
+super + x
+    bash ~/.config/bspwm/polybar/hack/scripts/powermenu.sh
 super + shift + w
 	sh ~/.config/bspwm/rofi/bin/windows
+
 # Rofi App Launcher
 super + shift + d
-	rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/hack/scripts/rofi/launcher.rasi
+	rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/bspwm/polybar/hack/scripts/rofi/launcher.rasi
 
 super + d
-    rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/hack/scripts/rofi/launcher.rasi
+    rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/bspwm/polybar/hack/scripts/rofi/launcher.rasi
 
 # make sxhkd reload its configuration files:
 super + shift + r
@@ -63,6 +68,14 @@ super + ctrl + {m,x,y,z}
 super + {_,shift + }{Left,Down,Up,Right}
        bspc node -{f,s} {west,south,north,east}
 
+# Change focus to next window, including floating window
+alt + {_,shift + }Tab
+	bspc node -f {next.local,prev.local}
+
+# Switch to last opened workspace
+super + {Tab,grave}
+	bspc {node,desktop} -f last
+
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
@@ -75,6 +88,41 @@ super + {_,shift + }{1-9,0}
 super + ctrl + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+
+##---------- System Keys ----------##
+
+# Take a screenshot
+Print
+	scrot -b -d 0 '%Y:%m:%d:%H:%M:%S.png' -e 'mv $f ~/Imágenes/'
+	
+# Take screenshot in 5 second
+alt + Print	
+	scrot -b -d 5 '%Y:%m:%d:%H:%M:%S.png' -e 'mv $f ~/Imágenes/'
+
+# Take screenshot in 10 second
+shift + Print	
+	scrot -b -d 0 '%Y:%m:%d:%H:%M:%S.png' -e 'mv $f ~/Imágenes/'
+
+# Brighness control
+XF86MonBrightness{Up,Down}
+	brightness{ --inc, --dec}
+	
+# Volume control
+XF86Audio{RaiseVolume,LowerVolume}
+	pactl set-sink-volume @DEFAULT_SINK@ { +10%, -10%}
+
+XF86AudioMute
+	pactl set-sink-volume @DEFAULT_SINK@ 0%
+
+XF86AudioMicMute
+	volume --toggle-mic
+	
+# Music control
+XF86Audio{Next,Prev,Play,Stop}
+	mpc {next,prev,toggle,stop}
+
+
+
 # ---------------------------------------------
 # CUSTOM
 # ---------------------------------------------
@@ -86,7 +134,7 @@ super + shift + n
 
 # terminal emulator
 super + Return
-	gnome-terminal
+	gnome-terminal --hide-menubar
 super + shift + t
   gnome-terminal --full-screen
 

@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
-## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
+#
+# Configuración BSPWM creada por https://github.com/srmai
+# Copyright (C) 2022-2024 Carlos Ayala <carlosadrian.cg2@gmail.com>
 ## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
-##
-## BSPWM config file for Archcraft
+#
 
 ## General ---------------------------------------------------#
 
-## Bspwm config directory
+## URl del directorio de Bspwm
 BSPDIR="$HOME/.config/bspwm"
 
 ## Export bspwm/bin dir to PATH
@@ -17,25 +18,25 @@ export PATH="${PATH}:$HOME/.config/bspwm/bin"
 export _JAVA_AWT_WM_NONREPARENTING=1
 #wmname LG3D
 
-## Current theme ---------------------------------------------#
+## Configuración de tema ---------------------------------------------#
 
-## Load current theme files to get colors for bspwm
-source "$BSPDIR"/themes/current.bash
+## Carga los colores del tema actual
+source "$BSPDIR"/themes/kana.bash
 
-## Get the wallpaper from theme file
-sxhkd &
-#feh --bg-fill /home/kana/Imágenes/Fondos/06.jpg
-#feh --bg-fill /home/kana/Imágenes/Fondos/07.jpg
-feh --bg-fill /home/kana/Imágenes/Fondos/21.jpg
+## Coloca un fondo de pantalla
+feh --bg-fill "$wallpaper"
 ## Get the colors from theme file
 BACKGROUND="$background"
 GREEN="$color2"
 BLUE="$color4"
 MAGENTA="$color5"
 
-## Bspwm appearance
+## Bspwm apariencia
+#Grosor del borde
 CURRENT_BORDER='1'
+#Separacion del borde
 CURRENT_GAP='10'
+
 CURRENT_SRATIO='0.50'
 
 ## Configurations --------------------------------------------#
@@ -67,34 +68,33 @@ bspc config paddingless_monocle true
 bspc config single_monocle false
 bspc config focus_follows_pointer true
 
-## Manage all the unmanaged windows remaining from a previous session.
+## Administrar todas las ventanas no administradas restantes de una sesión anterior.
 bspc wm --adopt-orphans
 
-## Window rules ----------------------------------------------#
+## Reglas de ventana ----------------------------------------------#
 
-# remove all rules first
+# Quitar todas las reglas primero
 bspc rule -r *:*
 
-## 1 > terminal (always open terminal on workspace-1)
+## 1 > terminal (siempre abra la terminal en el espacio de trabajo-1)
 bspc rule -a Alacritty desktop='^1' follow=on focus=on
 bspc rule -a gnome-terminal desktop='^1' follow=on focus=on
 
-## 2 > web (always open web browser on workspace-2)
+## 2 > web (siempre abra el navegador web en el espacio de trabajo-2)
 bspc rule -a firefox desktop='^2' follow=on focus=on
 bspc rule -a chromium desktop='^2' follow=on focus=on
-bspc rule -a Chrome desktop='^2' follow=on focus=on
 
-## 3 > files (always open file manager on workspace-3)
+## 3 > archivos (siempre abra el administrador de archivos en el espacio de trabajo-3)
 bspc rule -a Pcmanfm desktop='^3' follow=on focus=on
 bspc rule -a Thunar desktop='^3' follow=on focus=on
 bspc rule -a qBittorrent desktop='^3' follow=on focus=on
 
-## 4 > code (always open editors on workspace-4)
+## 4 > código (siempre abra los editores en el espacio de trabajo-4)
 bspc rule -a Geany desktop='^4' follow=on focus=on
 bspc rule -a code-oss desktop='^4' follow=on focus=on
 bspc rule -a code desktop='^4' follow=on focus=on
 
-## 5 > office and docs (always open office/doc apps on workspace-5)
+## 5 > office y docs (siempre abra las aplicaciones de office/doc en el espacio de trabajo-5)
 bspc rule -a Gucharmap desktop='^5' follow=on focus=on
 bspc rule -a Atril desktop='^5' follow=on focus=on
 bspc rule -a Evince desktop='^5' follow=on focus=on
@@ -107,12 +107,12 @@ bspc rule -a Soffice desktop='^5' follow=on focus=on
 bspc rule -a libreofficedev desktop='^5' follow=on focus=on
 bspc rule -a soffice desktop='^5' follow=on focus=on
 
-## 6 > communication (always open communication apps on workspace-6)
+## 6 > comunicación (siempre abra las aplicaciones de comunicación en el espacio de trabajo)-6)
 bspc rule -a Thunderbird desktop='^6' follow=on focus=on
 bspc rule -a TelegramDesktop desktop='^6' follow=on focus=on
 bspc rule -a Hexchat desktop='^6' follow=on focus=on
 
-## 7 > media (always open media apps on workspace-7)
+## 7 > medios (siempre abra las aplicaciones de medios en el espacio de trabajo-7)
 bspc rule -a Audacity desktop='^7' state=floating follow=on focus=on
 bspc rule -a Music desktop='^7' state=floating follow=on focus=on
 bspc rule -a MPlayer desktop='^7' state=floating follow=on focus=on
@@ -122,7 +122,7 @@ bspc rule -a krita desktop='^7' state=floating follow=on focus=on
 bspc rule -a Gimp-2.10 desktop='^7' state=floating follow=on focus=on
 bspc rule -a obs desktop='^7' state=floating follow=on focus=on
 
-## 8 > system (always open system apps on workspace-8)
+## 8 > sistema (siempre abra las aplicaciones del sistema en el espacio de trabajo-8)
 bspc rule -a 'VirtualBox Manager' desktop='^8' follow=on focus=on
 bspc rule -a GParted desktop='^8' follow=on focus=on
 bspc rule -a Lxappearance desktop='^8' state=floating follow=on focus=on
@@ -139,31 +139,26 @@ bspc rule -a stalonetray state=floating manage=off
 
 ## Autostart -------------------------------------------------#
 
-# Kill if already running
+# Matar si ya se está ejecutando
 killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager
 
 # Lauch xsettingsd daemon
-xsettingsd --config="$BSPDIR"/xsettingsd &
+#xsettingsd --config="$BSPDIR"/xsettingsd &
 
 # polkit agent
 if [[ ! `pidof xfce-polkit` ]]; then
 	/usr/lib/xfce-polkit/xfce-polkit &
 fi
 
-# Lauch keybindings daemon
+# Iniciar combinaciones de teclas
 sxhkd &
 
-# Enable Super Keys For Menu
+# Habilitar superteclas para el menú
 ksuperkey -e 'Super_L=Alt_L|F1' &
 ksuperkey -e 'Super_R=Alt_L|F1' &
 
-# Enable power management
+# Habilitar administración de energía
 xfce4-power-manager &
-
-# Fix cursor
-xsetroot -cursor_name left_ptr
-
-# Restore wallpaper
 
 # Start mpd
 exec mpd &
@@ -177,15 +172,22 @@ bspcomp
 bspdunst
 bspfloat &
 
-# Cambia la polyBar al inicio
-
-## Polybar config directory
+## Cambia la polyBar al inicio
+## Directorio de configuración de Polybar
 PBDIR="$HOME/.config/bspwm/polybar"
-
+## Selección de Polybar
 bash "$PBDIR"/launch.sh --hack
+## Tema
 bash "$PBDIR"/hack/scripts/colors-dark.sh --red
 
+##Ejecutar aplicaciones al inicio
 gnome-terminal --hide-menubar --working-directory=/ -e zsh
 gnome-terminal --hide-menubar -e zsh
 gnome-terminal --hide-menubar --working-directory=/home/kana/.config/ -e zsh
 gnome-terminal --hide-menubar --working-directory=/home/kana/Trabajo/ -e zsh
+
+#Selecciona escritorio de inicio
+bspc desktop -f ^1
+
+# Fix cursor
+xsetroot -cursor_name left_ptr

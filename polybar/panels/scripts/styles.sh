@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DIR="$HOME/.config/polybar/panels"
+DIR="$HOME~/.config/bspwm/polybar/olybar/panels"
 
 change_panel() {
 	# replace config with selected panel

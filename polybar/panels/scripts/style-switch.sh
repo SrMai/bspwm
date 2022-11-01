@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-SDIR="$HOME/.config/polybar/panels/scripts"
-DIR="$HOME/.config/polybar/panels/menu"
+SDIR="$HOME~/.config/bspwm/polybar/panels/scripts"
+DIR="$HOME~/.config/bspwm/polybar/panels/menu"
 
 if  [[ "$1" = "--budgie" ]]; then
 	theme="budgie"

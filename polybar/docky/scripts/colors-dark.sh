@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Color files
-PFILE="$HOME/.config/polybar/docky/colors.ini"
-RFILE="$HOME/.config/polybar/docky/scripts/rofi/colors.rasi"
+PFILE="$HOME~/.config/bspwm/polybar/docky/colors.ini"
+RFILE="$HOME~/.config/bspwm/polybar/docky/scripts/rofi/colors.rasi"
 
 # Change colors
 change_color() {

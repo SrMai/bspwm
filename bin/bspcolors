@@ -8,7 +8,7 @@
 DIR="$HOME/.config/bspwm"
 
 ## Current theme ---------------------------------------------#
-source "$DIR"/themes/current.bash
+source "$DIR"/themes/kana.bash
 
 ## Get colors
 getcolors () {

@@ -5,7 +5,7 @@
 ## Github  : @adi1090x
 ## Twitter : @adi1090x
 
-DIR="$HOME/.config/polybar/panels/menu"
+DIR="$HOME~/.config/bspwm/polybar/panels/menu"
 uptime=$(uptime -p | sed -e 's/up //g')
 
 if  [[ "$1" = "--budgie" ]]; then

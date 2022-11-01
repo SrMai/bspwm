@@ -2,7 +2,7 @@
 
 # Add this script to your wm startup file.
 
-DIR="$HOME/.config/polybar/material"
+DIR="$HOME~/.config/bspwm/polybar/material"
 
 # Terminate already running bar instances
 killall -q polybar

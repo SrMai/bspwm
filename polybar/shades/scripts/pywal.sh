@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Color files
-PFILE="$HOME/.config/polybar/shades/colors.ini"
-RFILE="$HOME/.config/polybar/shades/scripts/rofi/colors.rasi"
+PFILE="$HOME~/.config/bspwm/polybar/shades/colors.ini"
+RFILE="$HOME~/.config/bspwm/polybar/shades/scripts/rofi/colors.rasi"
 WFILE="$HOME/.cache/wal/colors.sh"
 
 # Get colors
