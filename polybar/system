@@ -22,7 +22,7 @@
 [system]
 sys_adapter = AC
 sys_battery = BAT1
-sys_graphics_card = amdgpu_bl0
+sys_graphics_card = intel_backlight
 sys_network_interface = enp7s0
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
