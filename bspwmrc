@@ -191,3 +191,28 @@ bspc desktop -f ^1
 
 # Fix cursor
 xsetroot -cursor_name left_ptr
+
+# Touchpad configurations
+for id in 1 2 3 4 5 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+do
+  hola=$(xinput | grep 'Touchpad' | grep -w 'id='$id'')
+  if [ -z "$hola"]
+  then
+    echo $id
+  else
+    echo 'hola'
+    for (( i=300; i<=400; i++ )); do
+      activar=$(xinput list-props $id | grep 'Tapping Enabled ('$i')' | grep -w '('$i')')
+      if [[ $activar == *"Tapping Enabled ("* ]];
+      then
+        echo '=========================================================================='
+        echo $activar
+        xinput set-prop $id $i 1
+        xinput list-props $id
+        echo '=========================================================================='
+      else
+        echo ''
+      fi
+    done
+ fi
+done
