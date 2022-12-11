@@ -10,4 +10,4 @@ FILE="$HOME~/.config/bspwm/polybar/forest/scripts/rofi/colors.rasi"
 #sed -i -e "s/ac: .*/ac:   ${AC}FF;/g" $FILE
 #sed -i -e "s/se: .*/se:   ${SE}FF;/g" $FILE
 
-rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~~/.config/bspwm/polybar/forest/scripts/rofi/launcher.rasi
+rofi -show drun -theme ~~/.config/bspwm/polybar/forest/scripts/rofi/launcher.rasi

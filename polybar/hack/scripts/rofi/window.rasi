@@ -1,0 +1,153 @@
+/* Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com> */
+/* Everyone is permitted to copy and distribute copies of this file under GNU-GPL3 */
+
+configuration {
+    show-icons:                     true;
+    display-window: 				"Aplicación :";
+    window-format: 					"{w} · {c} · {t}";
+    disable-history:                false;
+	click-to-exit: 					true;
+}
+
+@import "font.rasi"
+@import "colors.rasi"
+
+window {
+    transparency:                   "real";
+    background-color:               @bg;
+    text-color:                     @fg;
+    border:                  		1px;
+    border-color:                  	@ac;
+    border-radius:                  3px;
+    width:                          500px;
+    location:                       center;
+    anchor:                         center;
+    x-offset:                       0;
+    y-offset:                       0;
+}
+
+prompt {
+    enabled: 						true;
+	margin: 						0px 0px 0px 8px;
+    padding:    					6px 0px 6px 0px;
+	background-color: 				@bg;
+	text-color: 					@fg;
+    border:                  		0px 0px 1px 0px;
+    border-color:                  	@ac;
+    border-radius:                  3px;
+}
+
+textbox-prompt-colon {
+	expand: 						false;
+	str: 							"";
+    border-radius:                  3px;
+    background-color:               @bga;
+    text-color:                     @bg;
+    padding:    					6px 10px 6px 10px;
+	font:							"Iosevka Nerd Font 10";
+}
+
+entry {
+    background-color:               @bg;
+    text-color:                     @fg;
+    border:                  		0px 0px 1px 0px;
+    border-radius:                  0px;
+    border-color:                  	@ac;
+    placeholder-color:              @bg;
+    placeholder:                    "Find...";
+    expand:                         true;
+    horizontal-align:               0;
+    blink:                          true;
+    padding:                        6px;
+}
+
+inputbar {
+	children: 						[ textbox-prompt-colon, prompt, entry ];
+    spacing:                        0;
+    background-color:               @bg;
+    text-color:                     @fg;
+    expand:                         false;
+    margin:                         0px 0px 0px 0px;
+    padding:                        0px;
+    position:                       center;
+}
+
+case-indicator {
+    background-color:               @bg;
+    text-color:                     @fg;
+    spacing:                        0;
+}
+
+
+listview {
+    background-color:               @bg;
+    columns:                        1;
+    lines:							7;
+    spacing:                        5px;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         vertical;
+}
+
+mainbox {
+    background-color:               @bg;
+    children:                       [ inputbar, listview ];
+    spacing:                       	10px;
+    padding:                        10px;
+}
+
+element {
+    background-color:               @bg;
+    text-color:                     @fg;
+    orientation:                    horizontal;
+    border-radius:                  0px;
+    padding:                        5px;
+}
+
+element-icon {
+    background-color: 				inherit;
+    text-color:       				inherit;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    size:                           0px;
+    border:                         0px;
+}
+
+element-text {
+    background-color: 				inherit;
+    text-color:       				inherit;
+    expand:                         true;
+    horizontal-align:               0;
+    vertical-align:                 0;
+    margin:                         2px 0px 2px 2px;
+}
+
+element selected {
+    background-color:               @ac;
+    text-color:                     @fg;
+    border:                  		0px;
+    border-radius:                  0px;
+    border-color:                  	@ac;
+}
+
+element.active,
+element.selected.urgent {
+  background-color: @on;
+  text-color: @ac;
+  border-color: @on;
+}
+
+element.selected.urgent {
+  border-color: @ac;
+}
+
+element.urgent,
+element.selected.active {
+  background-color: @off;
+  text-color: @fg;
+  border-color: @off;
+}
+
+element.selected.active {
+  border-color: @ac;
+}

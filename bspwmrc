@@ -22,9 +22,34 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 ## Carga los colores del tema actual
 source "$BSPDIR"/themes/kana.bash
+## Coloca un fondo de pantalla aleatorio
+num_aleatorio=$RANDOM
+# Calculamos el resto de la división de este número entre 11 para que de un numero del 1 al 10
+numero=$((num_aleatorio % 11))
+if [ $numero -eq 1 ]; then
+  feh --bg-fill "$wallpaper"
+elif [ $numero -eq 2 ]; then
+  dwall -s earth
+elif [ $numero -eq 3 ]; then
+  feh --bg-fill "$wallpaper"
+elif [ $numero -eq 4 ]; then
+  dwall -s earth
+elif [ $numero -eq 5 ]; then
+  feh --bg-fill "$wallpaper"
+elif [ $numero -eq 6 ]; then
+  dwall -s forest
+elif [ $numero -eq 7 ]; then
+  dwall -s factory
+elif [ $numero -eq 8 ]; then
+  dwall -s mountains
+elif [ $numero -eq 9 ]; then
+  feh --bg-fill "$wallpaper"
+elif [ $numero -eq 10 ]; then
+  dwall -s desert
+else
+  feh --bg-fill "$wallpaper"
+fi
 
-## Coloca un fondo de pantalla
-feh --bg-fill "$wallpaper"
 ## Get the colors from theme file
 BACKGROUND="$background"
 GREEN="$color2"
@@ -198,18 +223,14 @@ do
   hola=$(xinput | grep 'Touchpad' | grep -w 'id='$id'')
   if [ -z "$hola"]
   then
-    echo $id
+    echo ''
   else
-    echo 'hola'
     for (( i=300; i<=400; i++ )); do
       activar=$(xinput list-props $id | grep 'Tapping Enabled ('$i')' | grep -w '('$i')')
       if [[ $activar == *"Tapping Enabled ("* ]];
       then
-        echo '=========================================================================='
-        echo $activar
         xinput set-prop $id $i 1
-        xinput list-props $id
-        echo '=========================================================================='
+        xinput list-props $id        
       else
         echo ''
       fi

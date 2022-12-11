@@ -1,29 +1,22 @@
 #!/usr/bin/env bash
-
 #
-# Atajos de teclado creados por https://github.com/srmai
+# Configuración creada por https://github.com/srmai
 #
 
 ##---------- Rofi Launcher & Menus ----------##
-
-# Rofi Themes Menu
+# Rofi Launcher & Menus
+# Herramientas para navegar y lanzar aplicaciones en Rofi
 ctrl + alt + t
 	sh ~/.config/bspwm/rofi/bin/themes
-
-# Rofi Menus/Applets
-super + {w,n,r,s}
-	sh ~/.config/bspwm/rofi/bin/{windows,mpd,asroot,screenshot}
+# Menu de apagado
 super + x
     bash ~/.config/bspwm/polybar/hack/scripts/powermenu.sh
-super + shift + w
-	sh ~/.config/bspwm/rofi/bin/windows
-
+# Menu de gestor de aplicaciones abiertas
+super + {w, shift + w}
+	rofi -no-lazy-grab -show window -theme ~/.config/bspwm/polybar/hack/scripts/rofi/window.rasi
 # Rofi App Launcher
-super + shift + d
+super + {d, shift + d}
 	rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/bspwm/polybar/hack/scripts/rofi/launcher.rasi
-
-super + d
-    rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/bspwm/polybar/hack/scripts/rofi/launcher.rasi
 
 # make sxhkd reload its configuration files:
 super + shift + r
@@ -80,6 +73,14 @@ super + {Tab,grave}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
+#Cambiar de monitor
+alt + {Left,Down,Up,Right}
+    bspc monitor -f {prev,prev,next,next}
+
+#Cambiar ventana de monitor
+alt + shift + {Left,Down,Up,Right}
+    bspc node focused -m {prev,prev,next,next}
+
 #
 # move/resize
 #
@@ -88,6 +89,13 @@ super + {_,shift + }{1-9,0}
 super + ctrl + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# expander ventana
+ctrl + alt + {Left,Down,Up,Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contraer ventana
+ctrl + alt + shift {Left,Down,Up,Right}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 ##---------- System Keys ----------##
 
@@ -102,26 +110,25 @@ alt + Print
 # Take screenshot in 10 second
 shift + Print	
 	scrot -b -d 0 '%Y:%m:%d:%H:%M:%S.png' -e 'mv $f ~/Imágenes/'
-
-# Brighness control
-XF86MonBrightness{Up,Down}
-	brightness{ --inc, --dec}
 	
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume}
 	pactl set-sink-volume @DEFAULT_SINK@ { +10%, -10%}
-
+    dunstify -u low 'Volumen'
 XF86AudioMute
 	pactl set-sink-volume @DEFAULT_SINK@ 0%
+F4
+    bash ~/.config/bspwm/scripts/MicrofonoOff.sh
+alt + F4
+    bash ~/.config/bspwm/scripts/MicrofonoOn.sh
 
-XF86AudioMicMute
-	volume --toggle-mic
-	
 # Music control
 XF86Audio{Next,Prev,Play,Stop}
 	mpc {next,prev,toggle,stop}
 
-
+# Cambiar fondo de pantalla por uno aleatorio
+super + shift + p
+    bash ~/.config/bspwm/scripts/Fondo.sh
 
 # ---------------------------------------------
 # CUSTOM
