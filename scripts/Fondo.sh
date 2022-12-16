@@ -12,10 +12,11 @@ BSPDIR="$HOME/.config/bspwm"
 
 ## Carga los colores del tema actual
 source "$BSPDIR"/themes/kana.bash
+
 ## Coloca un fondo de pantalla aleatorio
 num_aleatorio=$RANDOM
 # Calculamos el resto de la división de este número entre 11 para que de un numero del 1 al 10
-numero=$((num_aleatorio % 11))
+numero=$((num_aleatorio % 10 + 1))
 if [ $numero -eq 1 ]; then
   dwall -s chihuahuan
 elif [ $numero -eq 2 ]; then
@@ -39,3 +40,4 @@ elif [ $numero -eq 10 ]; then
 else
   feh --bg-fill "$wallpaper"
 fi
+

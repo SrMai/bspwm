@@ -16,7 +16,20 @@ export PATH="${PATH}:$HOME/.config/bspwm/bin"
 
 ## Run java applications without issues
 export _JAVA_AWT_WM_NONREPARENTING=1
-#wmname LG3D
+
+## Configuracion de dimensiones del monitor ---------------------------#
+
+## Directorio de configuraciones de ARandR
+ARDIR="$HOME/.config/bspwm/xrandr"
+
+#Determinamos la cantidad de monitores conectados usando el comando "xrandr"
+num_monitors=$(xrandr | grep " connected" | wc -l)
+
+# Si hay dos monitores conectados, ejecutamos el script
+if [ "$num_monitors" -eq 2 ]; then
+	## Selección de resolucion
+	bash "$ARDIR"/2domonitor.sh
+fi
 
 ## Configuración de tema ---------------------------------------------#
 
@@ -25,7 +38,7 @@ source "$BSPDIR"/themes/kana.bash
 ## Coloca un fondo de pantalla aleatorio
 num_aleatorio=$RANDOM
 # Calculamos el resto de la división de este número entre 11 para que de un numero del 1 al 10
-numero=$((num_aleatorio % 11))
+numero=$((num_aleatorio % 10 + 1))
 if [ $numero -eq 1 ]; then
   feh --bg-fill "$wallpaper"
 elif [ $numero -eq 2 ]; then
@@ -115,9 +128,9 @@ bspc rule -a Thunar desktop='^3' follow=on focus=on
 bspc rule -a qBittorrent desktop='^3' follow=on focus=on
 
 ## 4 > código (siempre abra los editores en el espacio de trabajo-4)
-bspc rule -a Geany desktop='^4' follow=on focus=on
-bspc rule -a code-oss desktop='^4' follow=on focus=on
-bspc rule -a code desktop='^4' follow=on focus=on
+bspc rule -a Geany desktop='^3' follow=on focus=on
+bspc rule -a code-oss desktop='^3' follow=on focus=on
+bspc rule -a code desktop='^3' follow=on focus=on
 
 ## 5 > office y docs (siempre abra las aplicaciones de office/doc en el espacio de trabajo-5)
 bspc rule -a Gucharmap desktop='^5' follow=on focus=on
