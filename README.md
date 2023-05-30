@@ -1,4 +1,7 @@
 # bspwm
-Mi configuracion personal de linux mint, con un WM llamado BSPWM, atajos de comando con SXHKD, menus con rofi y polybars.
+Mi versión de linux mint, con WM BSPWM, atajos de comando con SXHKD, menus con rofi y polybars.
 
-Creditos especiales a Aditya Shakya <adi1090x@gmail.com>, por la creaciòn de los estilos de los menus y polybars.
+Este conjunto de scripts fueron personalizados para mejorar la eficiencia, optimizar tiempos y reducir distracciones a la hora de programar.
+
+
+Creditos especiales a Aditya Shakya <adi1090x@gmail.com>, ya que se utilizaron sus estilos de menus rofi y polybars como bases para el diseño actual.
